@@ -43,9 +43,9 @@ func ToConnectError(err error) *connect.Error {
 		return nil
 	}
 
-	var no9Err *ErrorResponse
-	if errors.As(err, &no9Err) {
-		return no9Err.ToConnectError()
+	var customErr *ErrorResponse
+	if errors.As(err, &customErr) {
+		return customErr.ToConnectError()
 	}
 
 	return connect.NewError(connect.CodeInternal, errors.New("unknown error"))
